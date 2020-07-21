@@ -5,9 +5,9 @@ let lost = document.getElementById('lost');
 for (i = 1; i <= 9; i++) {
     getHole(i).onclick = function() {
         if (getHole(i).className.includes('hole__has-mole')) {
-            dead += 1;
+            dead.textContent = Number(dead.textContent) + 1;
         } else {
-            lost += 1;
+            lost.textContent = Number(lost.textContent) + 1;
         }
     }
 }
