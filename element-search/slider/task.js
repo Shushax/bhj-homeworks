@@ -6,32 +6,23 @@ let arrows = Array.from(arrowsElems);
 
 
 arrows[0].onclick = function() {
-    // for (let i = sliders.length - 1; i >= 0; i--) {
-    //     if (sliders[0].className.includes('slider__item_active')) {
-    //         sliders[0].classList.remove('slider__item_active');
-    //         sliders[4].classList.add('slider__item_active');
-    //     }
-    //     if (sliders[i].className.includes('slider__item_active')) {
-    //         sliders[i].classList.remove('slider__item_active');
-    //         sliders[i - 1].classList.add('slider__item_active');
-    //         break;
-    //     }
-    // }
+    let indexActiveSlide = sliders.findIndex((element) => element.className.includes('slider__item_active'));
+    let activeSlide = sliders.find((element) => element.className.includes('slider__item_active'));
+    activeSlide.classList.remove('slider__item_active');
+    if (indexActiveSlide === 0) {
+        sliders[sliders.length - 1].classList.add('slider__item_active');
+    } else {
+        sliders[indexActiveSlide - 1].classList.add('slider__item_active');
+    }
 }
 
 arrows[1].onclick = function() {
+    let indexActiveSlide = sliders.findIndex((element) => element.className.includes('slider__item_active'));
     let activeSlide = sliders.find((element) => element.className.includes('slider__item_active'));
     activeSlide.classList.remove('slider__item_active');
-    // for (let i = 0; i < sliders.length; i++) {
-    //     if ((i + 1) === sliders.length) {
-    //         sliders[i].classList.remove('slider__item_active');
-    //         sliders[0].classList.add('slider__item_active');
-    //     }
-    //     if (sliders[i].className.includes('slider__item_active')) {
-    //         sliders[i].classList.remove('slider__item_active');
-    //         sliders[i + 1].classList.add('slider__item_active');
-    //         break;
-    //     }
-        
-    // }
+    if (indexActiveSlide === (sliders.length - 1)) {
+        sliders[0].classList.add('slider__item_active');
+    } else {
+        sliders[indexActiveSlide + 1].classList.add('slider__item_active');
+    }
 }
