@@ -17,6 +17,17 @@ class Game {
   }
 
   registerEvents() {
+    document.onkeydown = function(e) {
+        let currentSymbolEl = document.querySelector('.symbol_current').textContent;
+        let currentSymbol = currentSymbolEl.toUpperCase();
+        let mySymbol = String.fromCharCode(e.keyCode);
+        if (mySymbol === currentSymbol) {
+          this.success();
+        } else {
+          this.fail();
+        }
+    }
+    }
     /*
       TODO:
       Написать обработчик события, который откликается
