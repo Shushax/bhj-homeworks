@@ -17,8 +17,9 @@ class Game {
   }
 
   registerEvents() {
-    document.onkeydown = function(e) {
-        let currentSymbolEl = document.querySelector('.symbol_current').textContent;
+    document.onkeydown = (e) => {
+      let currentSymbolSpan = document.querySelector('.symbol_current');
+      let currentSymbolEl = document.querySelector('.symbol_current').textContent;
         let currentSymbol = currentSymbolEl.toUpperCase();
         let mySymbol = String.fromCharCode(e.keyCode);
         if (mySymbol === currentSymbol) {
@@ -26,7 +27,10 @@ class Game {
         } else {
           this.fail();
         }
-    }
+        if (currentSymbolSpan.classList.contains('symbol_correct') && currentSymbolSpan.nextElementSibling) {
+          currentSymbolSpan.classList.remove('symbol_current');
+          currentSymbolSpan.nextElementSibling.classList.add('symbol_current');
+        }
     }
     /*
       TODO:
