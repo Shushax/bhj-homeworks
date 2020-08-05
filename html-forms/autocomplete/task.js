@@ -68,6 +68,20 @@ class Autocomplete {
   }
 
   getMatches( text ) {
+    this.input.oninput = function() {
+      for (let i = 0; i < this.input.length; i++) {
+        if (this.input.options[i].textContent.includes(text)) {
+          return [
+            [
+            {
+              text: this.input.options[i].textContent,
+              value: this.input.options[i].value
+            }
+            ]
+          ]
+        }
+      }
+    }
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
