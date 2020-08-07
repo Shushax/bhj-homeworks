@@ -8,7 +8,6 @@ let value = Array.from(valueEl);
 for (let i = 0; i < controlsLeft.length; i++) {
     controlsLeft[i].onclick = function() {
         if (value[i].textContent < 2) {
-            alert('Нельзя меньше 1!');
             return;
             
         }
@@ -33,7 +32,7 @@ for (let i = 0; i < product__add.length; i++) {
         let allCartThing = Array.from(allCartThingEl)
         for (let j = 0; j < allCartThing.length; j++) {
             if (allCartThing[j].dataset.id === document.querySelectorAll('.product')[i].dataset.id) {
-                document.querySelectorAll('.cart__product-count')[i].textContent = value[i].textContent;
+                document.querySelectorAll('.cart__product-count')[i].textContent = Number(document.querySelectorAll('.cart__product-count')[i].textContent) + Number(value[i].textContent);
                 return;
             }
         }
