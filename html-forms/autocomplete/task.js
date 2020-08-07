@@ -69,18 +69,25 @@ class Autocomplete {
 
   getMatches( text ) {
     this.input.oninput = function() {
-      for (let i = 0; i < this.input.length; i++) {
-        if (this.input.options[i].textContent.includes(text)) {
-          return [
-            [
-            {
-              text: this.input.options[i].textContent,
-              value: this.input.options[i].value
-            }
-            ]
-          ]
+      // for (let i = 0; i < this.input.length; i++) {
+      //   if (this.input.options[i].textContent.includes(text)) {
+      //     return [
+      //       [
+      //       {
+      //         text: this.input.options[i].text,
+      //         value: this.input.options[i].value
+      //       }
+      //       ]
+      //     ]
+      //   }
+      // }
+      let word = this.input.options.find((el) => el.text.includes(text));
+      return [
+        {
+          text: word.textContent,
+          value: word.value,
         }
-      }
+      ]
     }
     /*
       TODO: этот метод нужно дописать
