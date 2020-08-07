@@ -1,17 +1,24 @@
 let aEl = document.getElementsByClassName('has-tooltip');
 let a = Array.from(aEl);
-let div = document.createElement('div');
+for (let i = 0; i < a.length; i++) {
+  let div = document.createElement('div');
+  a[i].after(div);
+  div.classList.add('tooltip');
+  div.textContent = a[i].title;
+  let position = a[i].getBoundingClientRect();
+  div.style.marginLeft = `${position.left}px`;
+}
+let divsEl = document.getElementsByClassName('tooltip');
+let divs = Array.from(divsEl);
 
-for (let oneA of a) {
-    oneA.onclick = function(e) {
-      e.preventDefault();
-      if (div.style.display === 'block') {
-          div.style.display = 'none';
-          return;
-        }
-      oneA.after(div);
-      div.classList.add('tooltip');
-      div.textContent = oneA.title;
-      div.style.display = 'block';
-   }
+
+for (let i = 0; i < a.length; i++) {
+  a[i].onclick = function(e) {
+    e.preventDefault();
+    if (divs[i].style.display === 'block') {
+      divs[i].style.display = 'none';
+    } else {
+      divs[i].style.display = 'block';
+    }
+  }
 }
