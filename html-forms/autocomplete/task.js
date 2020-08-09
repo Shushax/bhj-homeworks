@@ -68,27 +68,18 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    this.input.oninput = function() {
-      // for (let i = 0; i < this.input.length; i++) {
-      //   if (this.input.options[i].textContent.includes(text)) {
-      //     return [
-      //       [
-      //       {
-      //         text: this.input.options[i].text,
-      //         value: this.input.options[i].value
-      //       }
-      //       ]
-      //     ]
-      //   }
-      // }
-      let word = this.input.options.find((el) => el.text.includes(text));
-      return [
-        {
-          text: word.textContent,
-          value: word.value,
+    this.input.onkeydown = function(e) {
+      let myWord = text;
+      let array = [];
+      for (let option of this.input.options) {
+        if (option.text.includes(myWord)) {
+          array.push({
+            text: option.text,
+            value: option.value
+          })
         }
-      ]
-    }
+      }
+    return array;
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
@@ -102,13 +93,8 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
-  }
+    }
+  } 
 }
 
 new Autocomplete( document.querySelector( '.autocomplete' ));
