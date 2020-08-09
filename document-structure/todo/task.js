@@ -2,22 +2,19 @@ let input = document.getElementById('task__input');
 let button = document.getElementById('tasks__add');
 let tasks__list = document.getElementById('tasks__list');
 input.onkeydown = function(e) {
+    input.value.trim();
     let enter = String(e.key);
-    if (enter === 'Enter' && (input.value === '' || input.value === ' ')) {
-        return false;
-    } else if (enter === 'Enter') {
+    if (enter === 'Enter' && (input.value !== '')) {
         toDo();
-        return false;
-    }    
+    }
 }
 
 button.onclick = function(e) {
     e.preventDefault();
-    if (input.value === '' || input.value === ' ') {
-        return false;
-    } else {
+    input.value.trim();
+    if (input.value !== '') {
         toDo();
-    }  
+    }
 }
 
 function toDo() {
