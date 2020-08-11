@@ -68,7 +68,6 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    this.input.onkeydown = function(e) {
       let myWord = text;
       let array = [];
       for (let option of this.input.options) {
@@ -93,7 +92,6 @@ class Autocomplete {
         value: 'Содержимое атрибута value'
       }
     */
-    }
   } 
 }
 
