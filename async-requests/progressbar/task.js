@@ -9,9 +9,9 @@ form.onsubmit = function(e) {
     xhr.open('POST', 'https://netology-slow-rest.herokuapp.com/upload.php');
     xhr.upload.onprogress = function(event) {
         if (event.loaded !== event.total) {
-            progress.value += 0.1;
+            progress.value = event.loaded;
         } else if (event.loaded === event.total) {
-           progress.value = 1.0;
+           progress.value = event.total;
            setTimeout( () => progress.value = 0.0, 2000)
            console.log('Файл загружен успешно!');
         }
