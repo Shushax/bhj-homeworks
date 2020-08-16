@@ -3,5 +3,7 @@ textarea.oninput = function() {
     localStorage.value = textarea.value;
 }
 window.onload = function() {
-    textarea.value = localStorage.value;
+    if (localStorage.value !== undefined) {
+        textarea.value = localStorage.value;
+    }
 }
