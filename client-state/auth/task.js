@@ -3,10 +3,6 @@ let button = document.getElementById('signin__btn')
 let form = document.getElementById('signin__form');
 let welcome = document.getElementById('welcome');
 
-window.onload = function() {
-    signin.classList.add('signin_active');
-}
-
 form.onsubmit = function(e) {
     e.preventDefault();
     let xhr = new XMLHttpRequest();
@@ -31,6 +27,8 @@ window.onload = function() {
         signin.classList.remove('signin_active');
         welcome.classList.add('welcome_active');
         welcome.textContent += localStorage.id
+    } else {
+        signin.classList.add('signin_active');
     }
 }
 
